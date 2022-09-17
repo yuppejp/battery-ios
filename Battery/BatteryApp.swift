@@ -2,7 +2,7 @@
 //  BatteryApp.swift
 //  Battery
 //
-//  Created by yukio on 2022/09/17.
+//  Created on 2022/09/17.
 //
 
 import SwiftUI
