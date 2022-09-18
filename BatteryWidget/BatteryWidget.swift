@@ -96,7 +96,7 @@ struct BatteryWidgetEntryView : View {
 @main
 
 struct BatteryWidget: Widget {
-    let kind: String = "BatteryWidget"
+    let kind: String = "jp.yuupe.Battery.BatteryWidget"
     var supportedFamilies: [WidgetFamily] = []
     
     init() {

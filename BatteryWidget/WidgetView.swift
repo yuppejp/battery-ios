@@ -33,7 +33,7 @@ struct CircularWidgetView : View {
 
     var body: some View {
         ZStack {
-            RingProgressView(value: Double(entry.batteryLevel), lineWidth: 6.0)
+            RingProgressView(value: Double(entry.batteryLevel), lineWidth: 6.0, monochrome: true)
             VStack {
                 Image(systemName: "iphone")
                     .imageScale(.medium)

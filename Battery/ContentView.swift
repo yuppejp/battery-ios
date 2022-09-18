@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct ContentView: View {
+    @Environment(\.scenePhase) private var scenePhase
     @State var batteryLevel: Float = 0.0
     @State var batteryState: UIDevice.BatteryState = .unknown
     @State var batteryDiscription: String = ""
@@ -20,7 +22,8 @@ struct ContentView: View {
                     Image(systemName: "iphone")
                         .imageScale(.large)
                         .foregroundColor(.green)
-                    Text(batteryLevel, format: FloatingPointFormatStyle.Percent())
+                    //Text(batteryLevel, format: FloatingPointFormatStyle.Percent())
+                    Text(batteryLevel.percentString)
                         .font(.largeTitle)
                 }
             }
@@ -34,25 +37,31 @@ struct ContentView: View {
                              value: Text(batteryDiscription))
             }
         }
-        .onAppear {
-            UIDevice.current.isBatteryMonitoringEnabled = true
-            batteryLevel = UIDevice.current.batteryLevel
-            batteryState = UIDevice.current.batteryState
-            UIDevice.current.isBatteryMonitoringEnabled = false
-            
-            // debug
-            if batteryLevel == -1 {
-                batteryLevel = 0.8
-                batteryState = .charging
+        .onChange(of: scenePhase) { phase in
+            if phase == .active {
+                UIDevice.current.isBatteryMonitoringEnabled = true
+                batteryLevel = UIDevice.current.batteryLevel
+                batteryState = UIDevice.current.batteryState
+                UIDevice.current.isBatteryMonitoringEnabled = false
+                
+                // debug
+                if batteryLevel == -1 {
+                    batteryLevel = 0.8
+                    batteryState = .charging
+                }
+                
+                switch batteryState {
+                case .unknown: batteryDiscription = "unknown"
+                case .unplugged: batteryDiscription = "unplugged"
+                case .charging: batteryDiscription = "charging"
+                case .full: batteryDiscription = "full"
+                default:  batteryDiscription = "error"
+                }
             }
             
-            switch batteryState {
-            case .unknown: batteryDiscription = "unknown"
-            case .unplugged: batteryDiscription = "unplugged"
-            case .charging: batteryDiscription = "charging"
-            case .full: batteryDiscription = "full"
-            default:  batteryDiscription = "error"
-            }
+            // ウィジェットを更新
+            WidgetCenter.shared.reloadTimelines(ofKind: "jp.yuupe.Battery.BatteryWidget")
+            //WidgetCenter.shared.reloadAllTimelines()
         }
     }
 }
