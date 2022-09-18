@@ -10,14 +10,19 @@ import SwiftUI
 struct RingProgressView: View {
     var value: Double
     var lineWidth: CGFloat = 12.0
+    var monochrome: Bool = false
     var outerRingColor: Color = Color.gray.opacity(0.3)
     var innerRingColor: Color {
-        if value < 0.1 {
-            return Color.red
-        } else if value < 0.25 {
-            return Color.yellow
+        if monochrome {
+            return Color.white
         } else {
-            return Color.green
+            if value < 0.1 {
+                return Color.red
+            } else if value < 0.25 {
+                return Color.yellow
+            } else {
+                return Color.green
+            }
         }
     }
 
