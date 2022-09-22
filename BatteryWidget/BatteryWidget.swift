@@ -53,13 +53,13 @@ struct SimpleEntry: TimelineEntry {
     
     var discription: String {
         let discription: String
-        
+
         switch batteryState {
-        case .unknown: discription = "不明"
-        case .unplugged: discription = "未接続"
-        case .charging: discription = "充電中"
-        case .full: discription = "満充電"
-        default:  discription = "不明すぎ"
+        case .unknown: discription = NSLocalizedString("BatteryState.unknown", comment: "")
+        case .unplugged: discription = NSLocalizedString("BatteryState.unplugged", comment: "")
+        case .charging: discription = NSLocalizedString("BatteryState.charging", comment: "")
+        case .full: discription = NSLocalizedString("BatteryState.full", comment: "")
+        default:  discription = NSLocalizedString("BatteryState.default", comment: "")
         }
         return discription
     }
@@ -94,7 +94,6 @@ struct BatteryWidgetEntryView : View {
 }
 
 @main
-
 struct BatteryWidget: Widget {
     let kind: String = "jp.yuupe.Battery.BatteryWidget"
     var supportedFamilies: [WidgetFamily] = []
@@ -119,8 +118,14 @@ struct BatteryWidget: Widget {
 
 @available(iOSApplicationExtension 16.0, *)
 struct BatteryWidget_Previews: PreviewProvider {
+    static let localizationIds = ["en", "ja"]
+
     static var previews: some View {
-        BatteryWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), batteryLevel: 0.8, batteryState: .charging))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+        ForEach(localizationIds, id: \.self) { id in
+            BatteryWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), batteryLevel: 0.8, batteryState: .charging))
+                .previewContext(WidgetPreviewContext(family: .systemSmall))
+                .previewDisplayName("Localized - \(id)")
+                .environment(\.locale, .init(identifier: id))
+        }
     }
 }

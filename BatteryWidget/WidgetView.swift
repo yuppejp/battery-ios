@@ -18,7 +18,7 @@ struct SmallWidgetView : View {
                     .imageScale(.large)
                 //Text(entry.batteryLevel, format: FloatingPointFormatStyle.Percent())
                 //    .font(.title)
-                Text(entry.batteryLevel.percentString)
+                Text(entry.batteryLevel.toPercentString())
                     .font(.title)
                 Text(entry.date, style: .time)
                     .font(.caption)
@@ -34,11 +34,13 @@ struct CircularWidgetView : View {
     var body: some View {
         ZStack {
             RingProgressView(value: Double(entry.batteryLevel), lineWidth: 6.0, monochrome: true)
-            VStack {
+            VStack(spacing: 0) {
                 Image(systemName: "iphone")
                     .imageScale(.medium)
-                Text(entry.batteryLevel.percentString)
-                    .font(.caption2)
+                Text((entry.batteryLevel * 100).toIntegerString())
+                    .font(.system(size: 14))
+                + Text("%")
+                    .font(.system(size: 10))
             }
         }
     }
@@ -57,7 +59,7 @@ struct RectangularWidgetView : View {
                 }
             }
             VStack {
-                Text(entry.batteryLevel.percentString)
+                Text(entry.batteryLevel.toPercentString())
                     .font(.body)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Text(entry.discription)
@@ -78,7 +80,7 @@ struct InlineWidgetView : View {
         HStack(spacing: 0) {
             Image(systemName: "iphone")
                 .imageScale(.large)
-            Text(entry.batteryLevel.percentString)
+            Text(entry.batteryLevel.toPercentString())
                 .font(.caption)
         }
     }

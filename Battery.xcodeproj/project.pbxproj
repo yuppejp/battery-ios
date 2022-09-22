@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5604BF3D28DC84CD00F344F1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5604BF3F28DC84CD00F344F1 /* Localizable.strings */; };
+		5604BF4128DC8E2C00F344F1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5604BF3F28DC84CD00F344F1 /* Localizable.strings */; };
 		5636C80328D53D43002A64CA /* BatteryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5636C80228D53D43002A64CA /* BatteryApp.swift */; };
 		5636C80528D53D43002A64CA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5636C80428D53D43002A64CA /* ContentView.swift */; };
 		5636C80728D53D44002A64CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5636C80628D53D44002A64CA /* Assets.xcassets */; };
@@ -21,6 +23,7 @@
 		5658736A28D588EB000C9A83 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658736928D588EB000C9A83 /* WidgetView.swift */; };
 		56B3A8BB28D5488E00996B89 /* RingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B3A8BA28D5488E00996B89 /* RingProgressView.swift */; };
 		56B3A8BD28D56A0900996B89 /* RingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B3A8BA28D5488E00996B89 /* RingProgressView.swift */; };
+		56B3B76228DB36BD00528D1E /* AppIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B3B76128DB36BD00528D1E /* AppIconView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5604BF3E28DC84CD00F344F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5604BF4028DC84E600F344F1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5636C7FF28D53D43002A64CA /* Battery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Battery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5636C80228D53D43002A64CA /* BatteryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryApp.swift; sourceTree = "<group>"; };
 		5636C80428D53D43002A64CA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +67,7 @@
 		5636C82028D53E51002A64CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5658736928D588EB000C9A83 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
 		56B3A8BA28D5488E00996B89 /* RingProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingProgressView.swift; sourceTree = "<group>"; };
+		56B3B76128DB36BD00528D1E /* AppIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +115,9 @@
 				5636C80228D53D43002A64CA /* BatteryApp.swift */,
 				5636C80428D53D43002A64CA /* ContentView.swift */,
 				56B3A8BA28D5488E00996B89 /* RingProgressView.swift */,
+				56B3B76128DB36BD00528D1E /* AppIconView.swift */,
 				5636C80628D53D44002A64CA /* Assets.xcassets */,
+				5604BF3F28DC84CD00F344F1 /* Localizable.strings */,
 				5636C80828D53D44002A64CA /* Preview Content */,
 			);
 			path = Battery;
@@ -208,6 +216,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 5636C7F628D53D43002A64CA;
 			productRefGroup = 5636C80028D53D43002A64CA /* Products */;
@@ -226,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5636C80A28D53D44002A64CA /* Preview Assets.xcassets in Resources */,
+				5604BF3D28DC84CD00F344F1 /* Localizable.strings in Resources */,
 				5636C80728D53D44002A64CA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -235,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5636C81F28D53E51002A64CA /* Assets.xcassets in Resources */,
+				5604BF4128DC8E2C00F344F1 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +260,7 @@
 				56B3A8BB28D5488E00996B89 /* RingProgressView.swift in Sources */,
 				5636C80528D53D43002A64CA /* ContentView.swift in Sources */,
 				5636C80328D53D43002A64CA /* BatteryApp.swift in Sources */,
+				56B3B76228DB36BD00528D1E /* AppIconView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +284,18 @@
 			targetProxy = 5636C82328D53E51002A64CA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5604BF3F28DC84CD00F344F1 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5604BF3E28DC84CD00F344F1 /* en */,
+				5604BF4028DC84E600F344F1 /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5636C80B28D53D44002A64CA /* Debug */ = {

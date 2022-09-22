@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  Battery
+*/
+
+"BatterySection" = "Battery";
+"BatteryLevel" = "Level";
+"BatteryStatus" = "Status";
+
+"DeviceSection" = "Device";
+"DeviceName" = "Device Name";
+"DeviceSystemVersion" = "System Version";
+
+"BatteryState.unknown" = "unknown";
+"BatteryState.unplugged" = "unplugged";
+"BatteryState.charging" = "charging";
+"BatteryState.full" = "full";
+"BatteryState.default" = "unknown(undefined)";
+
