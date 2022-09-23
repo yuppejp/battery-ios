@@ -1,7 +1,12 @@
-# battery-ios
+<img width="220" alt="appicon" src="https://user-images.githubusercontent.com/20147818/191887929-5280b406-8a19-45de-82e9-636921af20c9.png" align="left"/>
 
-iPhoneのロック画面にバッテリー残量を表示するウィジェットのサンプル。
+<div>
+<h2>Battery Widget - for iOS 16.0 or later</h2>
+<p>Display the battery level on the lock screen of your iOS device. It is convenient because it can be displayed at all times using some widgets.</p>
+<p>Preparing for registration on the App Store. Please wait.</p>
+<p>Please refer to the article below for the explanation inside the application by SwiftUI.<br>
+https://qiita.com/yuppejp/items/01102d472cc21810eb02
+</p>
 
-解説記事は[こちら](https://qiita.com/yuppejp/items/01102d472cc21810eb02)をみてください。
-
-![Simulator Screen Shot - iPhone 13 mini - 2022-09-17 at 16 10 33](https://user-images.githubusercontent.com/20147818/190845793-207e9f5e-deae-4b1b-a046-a79f2b32cf99.png)
+<br/><br/>
+<div align="center">
