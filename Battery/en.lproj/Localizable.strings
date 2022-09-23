@@ -3,6 +3,8 @@
   Battery
 */
 
+"WidgetDescription" = "Shows the battery status of your device";
+
 "BatterySection" = "Battery";
 "BatteryLevel" = "Level";
 "BatteryStatus" = "Status";

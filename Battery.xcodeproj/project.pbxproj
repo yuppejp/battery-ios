@@ -24,6 +24,10 @@
 		56B3A8BB28D5488E00996B89 /* RingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B3A8BA28D5488E00996B89 /* RingProgressView.swift */; };
 		56B3A8BD28D56A0900996B89 /* RingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B3A8BA28D5488E00996B89 /* RingProgressView.swift */; };
 		56B3B76228DB36BD00528D1E /* AppIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B3B76128DB36BD00528D1E /* AppIconView.swift */; };
+		56CC9FD528DD039A002E09AF /* Float+toString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CC9FD428DD039A002E09AF /* Float+toString.swift */; };
+		56CC9FD628DD039A002E09AF /* Float+toString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CC9FD428DD039A002E09AF /* Float+toString.swift */; };
+		56CC9FD828DD2485002E09AF /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CC9FD728DD2485002E09AF /* DeviceInfo.swift */; };
+		56CC9FD928DD2485002E09AF /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CC9FD728DD2485002E09AF /* DeviceInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +72,8 @@
 		5658736928D588EB000C9A83 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
 		56B3A8BA28D5488E00996B89 /* RingProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingProgressView.swift; sourceTree = "<group>"; };
 		56B3B76128DB36BD00528D1E /* AppIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconView.swift; sourceTree = "<group>"; };
+		56CC9FD428DD039A002E09AF /* Float+toString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+toString.swift"; sourceTree = "<group>"; };
+		56CC9FD728DD2485002E09AF /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,8 @@
 				5636C80428D53D43002A64CA /* ContentView.swift */,
 				56B3A8BA28D5488E00996B89 /* RingProgressView.swift */,
 				56B3B76128DB36BD00528D1E /* AppIconView.swift */,
+				56CC9FD728DD2485002E09AF /* DeviceInfo.swift */,
+				56CC9FD428DD039A002E09AF /* Float+toString.swift */,
 				5636C80628D53D44002A64CA /* Assets.xcassets */,
 				5604BF3F28DC84CD00F344F1 /* Localizable.strings */,
 				5636C80828D53D44002A64CA /* Preview Content */,
@@ -256,10 +264,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56CC9FD828DD2485002E09AF /* DeviceInfo.swift in Sources */,
 				5636C82228D53E51002A64CA /* BatteryWidget.intentdefinition in Sources */,
 				56B3A8BB28D5488E00996B89 /* RingProgressView.swift in Sources */,
 				5636C80528D53D43002A64CA /* ContentView.swift in Sources */,
 				5636C80328D53D43002A64CA /* BatteryApp.swift in Sources */,
+				56CC9FD528DD039A002E09AF /* Float+toString.swift in Sources */,
 				56B3B76228DB36BD00528D1E /* AppIconView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +278,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56CC9FD628DD039A002E09AF /* Float+toString.swift in Sources */,
+				56CC9FD928DD2485002E09AF /* DeviceInfo.swift in Sources */,
 				5636C82128D53E51002A64CA /* BatteryWidget.intentdefinition in Sources */,
 				56B3A8BD28D56A0900996B89 /* RingProgressView.swift in Sources */,
 				5658736A28D588EB000C9A83 /* WidgetView.swift in Sources */,

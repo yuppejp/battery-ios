@@ -12,19 +12,26 @@ struct SmallWidgetView : View {
 
     var body: some View {
         ZStack {
-            RingProgressView(value: Double(entry.batteryLevel))
-            VStack {
+            RingProgressView(value: Double(entry.deviceInfo.batteryLevel),
+                             lineWidth: 6.0,
+                             systemName: entry.deviceInfo.batteryState == .charging ? "bolt.fill" : "")
+            VStack(spacing: 0) {
                 Image(systemName: "iphone")
-                    .imageScale(.large)
-                //Text(entry.batteryLevel, format: FloatingPointFormatStyle.Percent())
-                //    .font(.title)
-                Text(entry.batteryLevel.toPercentString())
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30, height: 30)
+                Text(entry.deviceInfo.batteryLevel.toPercentString(percentSymbol: ""))
                     .font(.title)
-                Text(entry.date, style: .time)
-                    .font(.caption)
+                + Text("%")
+                    .font(.body)
+                if entry.deviceInfo.batteryState != .unplugged {
+                    Text(entry.deviceInfo.batteryDiscription)
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                }
             }
         }
-        .padding(12)
+        .padding(16)
     }
 }
 
@@ -33,14 +40,37 @@ struct CircularWidgetView : View {
 
     var body: some View {
         ZStack {
-            RingProgressView(value: Double(entry.batteryLevel), lineWidth: 6.0, monochrome: true)
+            RingProgressView(value: Double(entry.deviceInfo.batteryLevel), lineWidth: 6.0,
+                             systemName: entry.deviceInfo.batteryState == .charging ? "bolt.fill" : "",
+                             monochrome: true)
             VStack(spacing: 0) {
                 Image(systemName: "iphone")
-                    .imageScale(.medium)
-                Text((entry.batteryLevel * 100).toIntegerString())
-                    .font(.system(size: 14))
-                + Text("%")
-                    .font(.system(size: 10))
+                    .imageScale(.large)
+                    .offset(y: 1)
+                Text(entry.deviceInfo.batteryLevel.toPercentString(percentSymbol: ""))
+                    .font(.headline)
+                    .offset(y: -1)
+//                + Text("%")
+//                    .font(.system(size: 10))
+            }
+        }
+    }
+}
+
+struct CircularWidgetView2 : View {
+    var entry: Provider.Entry
+
+    var body: some View {
+        ZStack {
+            RingProgressView(value: Double(entry.deviceInfo.batteryLevel), lineWidth: 6.0,
+                             systemName: entry.deviceInfo.batteryState == .charging ? "bolt.fill" : "",
+                             monochrome: true)
+            VStack(spacing: 0) {
+                Image(systemName: entry.deviceInfo.getBattrySymbole())
+                    .imageScale(.large)
+                    .offset(y: 1)
+                Text(entry.deviceInfo.batteryLevel.toPercentString(percentSymbol: ""))
+                    .font(.headline)
             }
         }
     }
@@ -52,19 +82,26 @@ struct RectangularWidgetView : View {
     var body: some View {
         HStack {
             ZStack {
-                RingProgressView(value: Double(entry.batteryLevel), lineWidth: 6.0)
+                RingProgressView(value: Double(entry.deviceInfo.batteryLevel),
+                                 lineWidth: 6.0,
+                                 systemName: entry.deviceInfo.batteryState == .charging ? "bolt.fill" : "",
+                                 monochrome: true)
                 VStack {
                     Image(systemName: "iphone")
-                        .imageScale(.large)
+                        .resizable()
+                        .scaledToFit()
+                        .padding(14)
                 }
             }
             VStack {
-                Text(entry.batteryLevel.toPercentString())
-                    .font(.body)
+                Text(entry.deviceInfo.batteryLevel.toPercentString())
+                    .font(.headline)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text(entry.discription)
-                    .font(.body)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                if entry.deviceInfo.batteryState != .unplugged {
+                    Text(entry.deviceInfo.batteryDiscription)
+                        .font(.headline)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
                 Text(entry.date, style: .time)
                     .font(.caption)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -80,7 +117,7 @@ struct InlineWidgetView : View {
         HStack(spacing: 0) {
             Image(systemName: "iphone")
                 .imageScale(.large)
-            Text(entry.batteryLevel.toPercentString())
+            Text(entry.deviceInfo.batteryLevel.toPercentString())
                 .font(.caption)
         }
     }

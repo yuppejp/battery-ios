@@ -11,34 +11,22 @@ import Intents
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent(), batteryLevel: 0.8, batteryState: .charging)
+        let deviceInfo = DeviceInfo(batteryLevel: 0.8, batteryState: .charging)
+        return SimpleEntry(date: Date(), configuration: ConfigurationIntent(), deviceInfo: deviceInfo)
     }
     
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration, batteryLevel: 0.8, batteryState: .charging)
+    func getSnapshot(for configuration: ConfigurationIntent, in context: Context,
+                     completion: @escaping (SimpleEntry) -> ()) {
+        let deviceInfo = DeviceInfo()
+        let entry = SimpleEntry(date: Date(), configuration: configuration, deviceInfo: deviceInfo)
         completion(entry)
     }
     
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> ()) {
-        // Battery Status
-        UIDevice.current.isBatteryMonitoringEnabled = true
-        let batteryLevel = UIDevice.current.batteryLevel
-        let batteryState = UIDevice.current.batteryState
-        UIDevice.current.isBatteryMonitoringEnabled = false
-        
-        // debug
-        if batteryLevel == -1 {
-            let batteryLevel: Float = 0.8
-            let batteryState = UIDevice.BatteryState.charging
-            let entry = SimpleEntry(date: Date(), configuration: configuration, batteryLevel: batteryLevel, batteryState: batteryState)
-            let nextDate = Calendar.current.date(byAdding: .minute, value: 15, to: Date()) ?? Date()
-            let timeline = Timeline(entries: [entry], policy: .after(nextDate))
-            completion(timeline)
-            return
-        }
-
-        let entry = SimpleEntry(date: Date(), configuration: configuration, batteryLevel: batteryLevel, batteryState: batteryState)
-        let nextDate = Calendar.current.date(byAdding: .minute, value: 15, to: Date()) ?? Date()
+    func getTimeline(for configuration: ConfigurationIntent, in context: Context,
+                     completion: @escaping(Timeline<SimpleEntry>) -> ()) {
+        let deviceInfo = DeviceInfo()
+        let entry = SimpleEntry(date: Date(), configuration: configuration, deviceInfo: deviceInfo)
+        let nextDate = Calendar.current.date(byAdding: .minute, value: 10, to: Date()) ?? Date()
         let timeline = Timeline(entries: [entry], policy: .after(nextDate))
         completion(timeline)
     }
@@ -48,21 +36,7 @@ struct SimpleEntry: TimelineEntry {
     let date: Date
     let configuration: ConfigurationIntent
     
-    let batteryLevel: Float
-    let batteryState: UIDevice.BatteryState
-    
-    var discription: String {
-        let discription: String
-
-        switch batteryState {
-        case .unknown: discription = NSLocalizedString("BatteryState.unknown", comment: "")
-        case .unplugged: discription = NSLocalizedString("BatteryState.unplugged", comment: "")
-        case .charging: discription = NSLocalizedString("BatteryState.charging", comment: "")
-        case .full: discription = NSLocalizedString("BatteryState.full", comment: "")
-        default:  discription = NSLocalizedString("BatteryState.default", comment: "")
-        }
-        return discription
-    }
+    let deviceInfo: DeviceInfo
 }
 
 struct BatteryWidgetEntryView : View {
@@ -72,28 +46,40 @@ struct BatteryWidgetEntryView : View {
     var body: some View {
         switch WidgetFamily {
         case .systemSmall:
-            // ホーム画面の小さいウィジェット
+            // home screen: small
             SmallWidgetView(entry: entry)
         case .accessoryCircular:
-            // ロック画面の丸型ウィジェット
+            // lock screen: circular
             CircularWidgetView(entry: entry)
         case .accessoryRectangular:
-            // ロック画面の横長のウィジェット
+            // lock screen: rectangular
             RectangularWidgetView(entry: entry)
         case .accessoryInline:
-            // ロック画面の時計の上のウィジェット
+            // lock screen: inline
             InlineWidgetView(entry: entry)
         default:
-            HStack {
-                SmallWidgetView(entry: entry)
-                Text(WidgetFamily.description)
-            }
-            .padding(2)
+            Text("Unsupported")
+                .padding()
         }
     }
 }
 
-@main
+struct BatteryWidgetEntryView2 : View {
+    var entry: Provider.Entry
+    @Environment(\.widgetFamily) var WidgetFamily
+
+    var body: some View {
+        switch WidgetFamily {
+        case .accessoryCircular:
+            // lock screen: circular
+            CircularWidgetView2(entry: entry)
+        default:
+            Text("Unsupported")
+                .padding()
+        }
+    }
+}
+
 struct BatteryWidget: Widget {
     let kind: String = "jp.yuupe.Battery.BatteryWidget"
     var supportedFamilies: [WidgetFamily] = []
@@ -111,8 +97,39 @@ struct BatteryWidget: Widget {
             BatteryWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("Bettery Widget")
-        .description("This is an example widget.")
+        .description("WidgetDescription")
         .supportedFamilies(supportedFamilies)
+    }
+}
+
+struct BatteryWidget2: Widget {
+    let kind: String = "jp.yuupe.Battery.BatteryWidget2"
+    var supportedFamilies: [WidgetFamily] = []
+    
+    init() {
+        if #available(iOSApplicationExtension 16.0, *) {
+            supportedFamilies = [.accessoryCircular]
+        } else {
+            supportedFamilies = []
+        }
+    }
+    
+    var body: some WidgetConfiguration {
+        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+            BatteryWidgetEntryView2(entry: entry)
+        }
+        .configurationDisplayName("Bettery Widget2")
+        .description("WidgetDescription")
+        .supportedFamilies(supportedFamilies)
+    }
+}
+
+@main
+struct ExampleWidgets: WidgetBundle {
+    @WidgetBundleBuilder
+    var body: some Widget {
+        BatteryWidget()
+        BatteryWidget2()
     }
 }
 
@@ -121,11 +138,22 @@ struct BatteryWidget_Previews: PreviewProvider {
     static let localizationIds = ["en", "ja"]
 
     static var previews: some View {
+        let deviceInfo = DeviceInfo()
+        
         ForEach(localizationIds, id: \.self) { id in
-            BatteryWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(), batteryLevel: 0.8, batteryState: .charging))
-                .previewContext(WidgetPreviewContext(family: .systemSmall))
-                .previewDisplayName("Localized - \(id)")
-                .environment(\.locale, .init(identifier: id))
+            Group {
+                BatteryWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(),
+                                                          deviceInfo: deviceInfo))
+                    .previewContext(WidgetPreviewContext(family: .systemSmall))
+                    .previewDisplayName("Widget1 - \(id)")
+                    .environment(\.locale, .init(identifier: id))
+                
+                BatteryWidgetEntryView2(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent(),
+                                                          deviceInfo: deviceInfo))
+                    .previewContext(WidgetPreviewContext(family: .systemSmall))
+                    .previewDisplayName("Widget2 - \(id)")
+                    .environment(\.locale, .init(identifier: id))
+            }
         }
     }
 }

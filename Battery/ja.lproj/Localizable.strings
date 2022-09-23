@@ -3,8 +3,10 @@
   Battery
 */
 
+"WidgetDescription" = "端末のバッテリー状態を表示します";
+
 "BatterySection" = "バッテリー";
-"BatteryLevel" = "残量";
+"BatteryLevel" = "残量レベル";
 "BatteryStatus" = "状態";
 
 "DeviceSection" = "デバイス情報";
@@ -12,8 +14,8 @@
 "DeviceSystemVersion" = "バージョン";
 
 "BatteryState.unknown" = "不明";
-"BatteryState.unplugged" = "未接続";
+"BatteryState.unplugged" = "充電していません";
 "BatteryState.charging" = "充電中";
-"BatteryState.full" = "満充電";
+"BatteryState.full" = "フル充電";
 "BatteryState.default" = "不明(未定義)";
 

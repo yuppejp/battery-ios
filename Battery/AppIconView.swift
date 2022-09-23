@@ -8,19 +8,20 @@
 import SwiftUI
 
 struct AppIconView: View {
+    private let symbolWidth = 0.055
+    
     var body: some View {
         HStack {
             if #available(iOS 16.0, *) {
                 ZStack {
                     Rectangle()
                         .fill(.green.gradient)
-                    Text("⚡︎")
-                        .font(.system(size: 100))
-                        .fontWeight(.black)
+                    Image(systemName: "bolt.fill")
+                        .font(.system(size: 50))
                         .foregroundColor(.white)
                         .offset(x: 0, y: -105)
                     Circle()
-                        .trim(from: 0.06, to: 0.94)
+                        .trim(from: symbolWidth, to: 1.0 - symbolWidth)
                         .stroke(
                             style: StrokeStyle(
                                 lineWidth: 15.0,
