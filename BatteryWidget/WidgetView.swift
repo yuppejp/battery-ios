@@ -28,6 +28,10 @@ struct SmallWidgetView : View {
                     Text(entry.deviceInfo.batteryDiscription)
                         .font(.caption)
                         .foregroundColor(.gray)
+                } else {
+                    Text(entry.date, style: .time)
+                        .font(.caption)
+                        .foregroundColor(.gray)
                 }
             }
         }
@@ -115,10 +119,9 @@ struct InlineWidgetView : View {
 
     var body: some View {
         HStack(spacing: 0) {
-            Image(systemName: "iphone")
+            Image(systemName: entry.deviceInfo.getBattrySymbole())
                 .imageScale(.large)
             Text(entry.deviceInfo.batteryLevel.toPercentString())
-                .font(.caption)
         }
     }
 }

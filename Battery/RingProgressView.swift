@@ -78,22 +78,29 @@ struct RingProgressView: View {
     
     func trimMargin(_ size: CGSize) -> CGFloat {
         let r = radius(size)
-        print("**** r: ", r)
-        if r < 100 {
+        if r < 40 {
+            // lock screen widget
             return 0.05
+        } else if r < 100 {
+            // home screen  widget
+            return 0.03
         } else {
-            return 0.035
+            // main app
+            return 0.03
         }
     }
     
     func symbolWidth(_ size: CGSize) -> CGFloat {
         let r = radius(size)
         if r < 40 {
+            // lock screen widget
             return r / 2.8
         } else if r < 100 {
-            return r / 2.2
+            // home screen  widget
+            return r / 3.2
         } else {
-            return r / 2.5
+            // main app
+            return r / 3.2
         }
     }
     

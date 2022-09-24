@@ -3,6 +3,8 @@
   Battery
 */
 
+"WidgetDisplayName1" = "バッテリー状態";
+"WidgetDisplayName2" = "バッテリー状態";
 "WidgetDescription" = "端末のバッテリー状態を表示します";
 
 "BatterySection" = "バッテリー";

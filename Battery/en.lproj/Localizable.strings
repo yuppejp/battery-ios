@@ -3,6 +3,8 @@
   Battery
 */
 
+"WidgetDisplayName1" = "Battery status";
+"WidgetDisplayName2" = "Battery status";
 "WidgetDescription" = "Shows the battery status of your device";
 
 "BatterySection" = "Battery";

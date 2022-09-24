@@ -81,7 +81,7 @@ struct BatteryWidgetEntryView2 : View {
 }
 
 struct BatteryWidget: Widget {
-    let kind: String = "jp.yuupe.Battery.BatteryWidget"
+    let kind: String = "com.yuupejp.Battery.BatteryWidget"
     var supportedFamilies: [WidgetFamily] = []
     
     init() {
@@ -96,14 +96,14 @@ struct BatteryWidget: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             BatteryWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("Bettery Widget")
+        .configurationDisplayName("WidgetDisplayName1")
         .description("WidgetDescription")
         .supportedFamilies(supportedFamilies)
     }
 }
 
 struct BatteryWidget2: Widget {
-    let kind: String = "jp.yuupe.Battery.BatteryWidget2"
+    let kind: String = "com.yuupejp.Battery.BatteryWidget2"
     var supportedFamilies: [WidgetFamily] = []
     
     init() {
@@ -118,7 +118,7 @@ struct BatteryWidget2: Widget {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             BatteryWidgetEntryView2(entry: entry)
         }
-        .configurationDisplayName("Bettery Widget2")
+        .configurationDisplayName("WidgetDisplayName2")
         .description("WidgetDescription")
         .supportedFamilies(supportedFamilies)
     }

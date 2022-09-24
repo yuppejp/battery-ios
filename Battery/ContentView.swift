@@ -65,8 +65,8 @@ struct ContentView: View {
             }
             
             // update nofification to widget
-            WidgetCenter.shared.reloadTimelines(ofKind: "jp.yuupe.Battery.BatteryWidget")
-            WidgetCenter.shared.reloadTimelines(ofKind: "jp.yuupe.Battery.BatteryWidget2")
+            WidgetCenter.shared.reloadTimelines(ofKind: "com.yuupejp.Battery.BatteryWidget")
+            WidgetCenter.shared.reloadTimelines(ofKind: "com.yuupejp.Battery.BatteryWidget2")
         }
     }
 }

@@ -43,9 +43,10 @@ class DeviceInfo: ObservableObject {
         deviceSystemVersion = UIDevice.current.systemVersion
         UIDevice.current.isBatteryMonitoringEnabled = false
 
-        // debug
-        //batteryLevel = 0.8
-        //batteryState = .charging
+#if targetEnvironment(simulator)
+        batteryLevel = 0.8
+        batteryState = .charging
+#endif
     }
 
     func getBattrySymbole() -> String {
