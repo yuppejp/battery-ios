@@ -21,6 +21,10 @@
 		5636C82228D53E51002A64CA /* BatteryWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 5636C81D28D53E4F002A64CA /* BatteryWidget.intentdefinition */; };
 		5636C82528D53E51002A64CA /* BatteryWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5636C81428D53E4F002A64CA /* BatteryWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5658736A28D588EB000C9A83 /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5658736928D588EB000C9A83 /* WidgetView.swift */; };
+		56AD298F28E7D54C00AEBBC4 /* Date+toString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AD298E28E7D54C00AEBBC4 /* Date+toString.swift */; };
+		56AD299028E7D72800AEBBC4 /* Date+toString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AD298E28E7D54C00AEBBC4 /* Date+toString.swift */; };
+		56AD299228E7E25F00AEBBC4 /* AppSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AD299128E7E25F00AEBBC4 /* AppSettingView.swift */; };
+		56AD299528E8059100AEBBC4 /* AppSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AD299128E7E25F00AEBBC4 /* AppSettingView.swift */; };
 		56B3A8BB28D5488E00996B89 /* RingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B3A8BA28D5488E00996B89 /* RingProgressView.swift */; };
 		56B3A8BD28D56A0900996B89 /* RingProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B3A8BA28D5488E00996B89 /* RingProgressView.swift */; };
 		56B3B76228DB36BD00528D1E /* AppIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B3B76128DB36BD00528D1E /* AppIconView.swift */; };
@@ -57,7 +61,7 @@
 /* Begin PBXFileReference section */
 		5604BF3E28DC84CD00F344F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5604BF4028DC84E600F344F1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		5636C7FF28D53D43002A64CA /* Battery Widget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Battery Widget.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5636C7FF28D53D43002A64CA /* Battery Meter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Battery Meter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5636C80228D53D43002A64CA /* BatteryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryApp.swift; sourceTree = "<group>"; };
 		5636C80428D53D43002A64CA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5636C80628D53D44002A64CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,6 +74,10 @@
 		5636C81E28D53E51002A64CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5636C82028D53E51002A64CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5658736928D588EB000C9A83 /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
+		56AD298E28E7D54C00AEBBC4 /* Date+toString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+toString.swift"; sourceTree = "<group>"; };
+		56AD299128E7E25F00AEBBC4 /* AppSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingView.swift; sourceTree = "<group>"; };
+		56AD299328E7FF6300AEBBC4 /* Battery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Battery.entitlements; sourceTree = "<group>"; };
+		56AD299428E7FFB500AEBBC4 /* BatteryWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BatteryWidgetExtension.entitlements; sourceTree = "<group>"; };
 		56B3A8BA28D5488E00996B89 /* RingProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingProgressView.swift; sourceTree = "<group>"; };
 		56B3B76128DB36BD00528D1E /* AppIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconView.swift; sourceTree = "<group>"; };
 		56CC9FD428DD039A002E09AF /* Float+toString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Float+toString.swift"; sourceTree = "<group>"; };
@@ -99,6 +107,7 @@
 		5636C7F628D53D43002A64CA = {
 			isa = PBXGroup;
 			children = (
+				56AD299428E7FFB500AEBBC4 /* BatteryWidgetExtension.entitlements */,
 				5636C80128D53D43002A64CA /* Battery */,
 				5636C81A28D53E4F002A64CA /* BatteryWidget */,
 				5636C81528D53E4F002A64CA /* Frameworks */,
@@ -109,7 +118,7 @@
 		5636C80028D53D43002A64CA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5636C7FF28D53D43002A64CA /* Battery Widget.app */,
+				5636C7FF28D53D43002A64CA /* Battery Meter.app */,
 				5636C81428D53E4F002A64CA /* BatteryWidgetExtension.appex */,
 			);
 			name = Products;
@@ -118,12 +127,15 @@
 		5636C80128D53D43002A64CA /* Battery */ = {
 			isa = PBXGroup;
 			children = (
+				56AD299328E7FF6300AEBBC4 /* Battery.entitlements */,
 				5636C80228D53D43002A64CA /* BatteryApp.swift */,
 				5636C80428D53D43002A64CA /* ContentView.swift */,
 				56B3A8BA28D5488E00996B89 /* RingProgressView.swift */,
+				56AD299128E7E25F00AEBBC4 /* AppSettingView.swift */,
 				56B3B76128DB36BD00528D1E /* AppIconView.swift */,
 				56CC9FD728DD2485002E09AF /* DeviceInfo.swift */,
 				56CC9FD428DD039A002E09AF /* Float+toString.swift */,
+				56AD298E28E7D54C00AEBBC4 /* Date+toString.swift */,
 				5636C80628D53D44002A64CA /* Assets.xcassets */,
 				5604BF3F28DC84CD00F344F1 /* Localizable.strings */,
 				5636C80828D53D44002A64CA /* Preview Content */,
@@ -179,7 +191,7 @@
 			);
 			name = Battery;
 			productName = Battery;
-			productReference = 5636C7FF28D53D43002A64CA /* Battery Widget.app */;
+			productReference = 5636C7FF28D53D43002A64CA /* Battery Meter.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5636C81328D53E4F002A64CA /* BatteryWidgetExtension */ = {
@@ -265,9 +277,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				56CC9FD828DD2485002E09AF /* DeviceInfo.swift in Sources */,
+				56AD298F28E7D54C00AEBBC4 /* Date+toString.swift in Sources */,
 				5636C82228D53E51002A64CA /* BatteryWidget.intentdefinition in Sources */,
 				56B3A8BB28D5488E00996B89 /* RingProgressView.swift in Sources */,
 				5636C80528D53D43002A64CA /* ContentView.swift in Sources */,
+				56AD299228E7E25F00AEBBC4 /* AppSettingView.swift in Sources */,
 				5636C80328D53D43002A64CA /* BatteryApp.swift in Sources */,
 				56CC9FD528DD039A002E09AF /* Float+toString.swift in Sources */,
 				56B3B76228DB36BD00528D1E /* AppIconView.swift in Sources */,
@@ -278,6 +292,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56AD299028E7D72800AEBBC4 /* Date+toString.swift in Sources */,
+				56AD299528E8059100AEBBC4 /* AppSettingView.swift in Sources */,
 				56CC9FD628DD039A002E09AF /* Float+toString.swift in Sources */,
 				56CC9FD928DD2485002E09AF /* DeviceInfo.swift in Sources */,
 				5636C82128D53E51002A64CA /* BatteryWidget.intentdefinition in Sources */,
@@ -430,24 +446,26 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Battery/Battery.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Battery/Preview Content\"";
 				DEVELOPMENT_TEAM = 358F964YVR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuupejp.Battery;
-				PRODUCT_NAME = "Battery Widget";
+				PRODUCT_NAME = "Battery Meter";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -463,24 +481,26 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Battery/Battery.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Battery/Preview Content\"";
 				DEVELOPMENT_TEAM = 358F964YVR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yuupejp.Battery;
-				PRODUCT_NAME = "Battery Widget";
+				PRODUCT_NAME = "Battery Meter";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -495,8 +515,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BatteryWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 358F964YVR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BatteryWidget/Info.plist;
@@ -522,8 +543,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = BatteryWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 358F964YVR;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BatteryWidget/Info.plist;

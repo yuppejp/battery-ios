@@ -9,36 +9,47 @@ import SwiftUI
 
 struct AppIconView: View {
     private let symbolWidth = 0.055
-    
+
     var body: some View {
         HStack {
             if #available(iOS 16.0, *) {
-                ZStack {
-                    Rectangle()
-                        .fill(.green.gradient)
-                    Image(systemName: "bolt.fill")
-                        .font(.system(size: 50))
-                        .foregroundColor(.white)
-                        .offset(x: 0, y: -105)
-                    Circle()
-                        .trim(from: symbolWidth, to: 1.0 - symbolWidth)
-                        .stroke(
-                            style: StrokeStyle(
-                                lineWidth: 15.0,
-                                lineCap: .square,
-                                lineJoin: .round
-                            )
-                        )
-                        .rotationEffect(.degrees(-90.0))
-                        .foregroundColor(.white)
-                        .padding(45)
-                    Image(systemName: "iphone")
-                        .resizable()
-                        //.renderingMode(.original)
-                        .foregroundColor(.white)
-                        .scaledToFit()
-                        .padding(90)
-                        //.imageScale(.large)
+                GeometryReader{ geometry in
+                    ZStack {
+                        Rectangle()
+                            .fill(.blue.gradient)
+
+                        ZStack {
+                            Circle()
+                                .trim(from: 0.15, to: 1 - 0.15)
+                                .stroke(
+                                    style: StrokeStyle(
+                                        lineWidth: 18.0,
+                                        lineCap: .square,
+                                        lineJoin: .round
+                                    )
+                                )
+                                .rotationEffect(.degrees(90.0))
+                                .foregroundColor(.white)
+
+                            Image(systemName: "bolt.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(.white)
+                                .frame(width: geometry.size.height / 4)
+                                .offset(y: -5)
+                            
+                            VStack {
+                                Image(systemName: "battery.100")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .foregroundColor(.white)
+                                    .frame(width: geometry.size.height / 2.7)
+                            }
+                            .frame(maxHeight: .infinity, alignment: .bottom)
+                            .offset(y: 15)
+                        }
+                        .padding(50)
+                    }
                 }
             } else {
                 Rectangle()

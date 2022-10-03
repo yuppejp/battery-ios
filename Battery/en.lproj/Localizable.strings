@@ -3,9 +3,10 @@
   Battery
 */
 
-"WidgetDisplayName1" = "Battery status";
-"WidgetDisplayName2" = "Battery status";
-"WidgetDescription" = "Shows the battery status of your device";
+"battery" = "battery";
+
+"WidgetDisplayName" = "Battery Status";
+"WidgetDescription" = "Shows the battery status of your device.";
 
 "BatterySection" = "Battery";
 "BatteryLevel" = "Level";
@@ -21,3 +22,24 @@
 "BatteryState.full" = "full";
 "BatteryState.default" = "unknown(undefined)";
 
+"RefreshTime" = "Refresh Time";
+"RefreshTimeOffset" = "Elapsed Time";
+
+// App Setting
+"SettingGeneral" = "General";
+
+"SettingCircleType" = "Level Type";
+"SettingCircleType_Meter" = "Meter";
+"SettingCircleType_Circle" = "Circle";
+
+"SettingMeterColor" = "Level Color";
+"SettingMeterColor_Blue" = "Blue";
+"SettingMeterColor_Green" = "Green";
+
+"SettingIconType" = "Icon Type";
+"SettingIconType_Battery" = "Battery";
+"SettingIconType_Iphone" = "iPhone";
+
+"SettingWidget" = "Widget";
+"SettingWidget_ShowIcon" = "Show Icon";
+"SettingWidget_ShowTime" = "Show Detection Time";

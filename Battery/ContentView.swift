@@ -9,40 +9,112 @@ import SwiftUI
 import WidgetKit
 
 struct ContentView: View {
+    @StateObject var deviceInfo = DeviceInfo(monitoring: true, widgetOfKind: "com.yuupejp.Battery.BatteryWidget")
+    @StateObject var appSetting = AppSetting()
+
+    var body: some View {
+        NavigationView {
+            MainView(deviceInfo: deviceInfo, appSetting: appSetting)
+                .navigationBarTitleDisplayMode(.inline) // hide title region
+                .navigationBarItems(trailing: NavigationLink(destination: AppSettingView(appSetting: appSetting)) {
+                    Image(systemName: "gearshape.fill")
+                        .foregroundColor(.gray)
+                })
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+    }
+}
+
+struct MainView: View {
     @Environment(\.scenePhase) private var scenePhase
-    @State var circleSize = CGSize()
-    @ObservedObject var deviceInfo = DeviceInfo()
+    @ObservedObject var deviceInfo: DeviceInfo
+    @ObservedObject var appSetting = AppSetting()
+    @State var value: Float = 0.0
 
     var body: some View {
         VStack(spacing: 0) {
-            ZStack {
-                RingProgressView(value: Double(deviceInfo.batteryLevel),
-                                 systemName: deviceInfo.batteryState == .charging ? "bolt.fill" : "")
-                    .background(GeometryReader{ geometry -> Text in
-                        DispatchQueue.main.async {
-                            circleSize = geometry.size
+            VStack(spacing: 0) {
+                if appSetting.useCircle {
+                    GeometryReader{ geometry in
+                        ZStack {
+                            RingProgressView(value: deviceInfo.batteryLevel,
+                                             symboleName: deviceInfo.batteryState == .charging ? "bolt.fill" : "",
+                                             useGreen: appSetting.useGreen)
+                            VStack {
+                                Image(systemName: appSetting.useBatterySymbole ?  deviceInfo.battrySymbole : "iphone")
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: geometry.size.height / 6)
+                                Text(deviceInfo.batteryLevel.toPercentString())
+                                    .font(.system(size: geometry.size.height / 6))
+                            }
                         }
-                        return Text("")
-                    })
-                VStack {
-                    Image(systemName: "iphone")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: circleSize.width / 6)
+                    }
+                } else {
+                    GeometryReader{ geometry in
+                        ZStack {
+                            ArcProgressView(value: value,
+                                            symboleName: deviceInfo.battrySymbole,
+                                            useGreen: appSetting.useGreen)
+                            Text(deviceInfo.batteryLevel.toPercentString())
+                                .font(.system(size: geometry.size.height / 4))
+                                .offset(y: -(geometry.size.height / 14))
+                            
+                            HStack {
+                                Text("0")
+                                    .foregroundColor(.gray)
+                                    .frame(maxWidth: .infinity, alignment: .trailing)
+                                    .offset(x: -(geometry.size.height * 0.2))
 
-                    Text(deviceInfo.batteryLevel.toPercentString())
-                        .font(.largeTitle)
+                                Image(systemName: appSetting.useBatterySymbole ?  deviceInfo.battrySymbole : "iphone")
+                                    .renderingMode(.original)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: geometry.size.height / 4,
+                                           height: geometry.size.height / 4)
+                                Text("100")
+                                    .foregroundColor(.gray)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .offset(x: geometry.size.height * 0.18)
+                            }
+                            .frame(maxHeight: .infinity, alignment: .bottom)
+                            .offset(y: -(geometry.size.height / 25))
+                        }
+                    }
                 }
             }
-            .padding(20)
-            .padding(.top, circleSize.height / 20)
+            .padding()
+            .onAppear {
+                withAnimation(.easeOut(duration: 0.5)) {
+                    value = deviceInfo.batteryLevel
+                }
+            }
+            .onChange(of: deviceInfo.batteryLevel) { newValue in
+                withAnimation(.easeOut(duration: 0.5)) {
+                    value = newValue
+                }
+            }
+            .onChange(of: scenePhase) { phase in
+    //            if phase == .active {
+    //                deviceInfo.update()
+    //            }
+                
+                // nofification to widget
+                WidgetCenter.shared.reloadTimelines(ofKind: "com.yuupejp.Battery.BatteryWidget")
+            }
 
+            
             List {
                 Section {
                     ListItemView(name: Text("BatteryLevel"),
                                  value: Text(deviceInfo.batteryLevel.toDecimalString(minDigits: 2, maxDigits: 2)))
                     ListItemView(name: Text("BatteryStatus"),
                                  value: Text(deviceInfo.batteryDiscription))
+                    ListItemView(name: Text("RefreshTime"),
+                                 value: Text(deviceInfo.refreshDate, style: .time))
+                    ListItemView(name: Text("RefreshTimeOffset"),
+                                 value: Text(deviceInfo.refreshDate, style: .offset))
                 } header: {
                     Text("BatterySection")
                 }
@@ -53,28 +125,23 @@ struct ContentView: View {
                     Text("DeviceSection")
                 }
             }
+            .padding(.top, 0)
         }
-        .onAppear {
-            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
-                deviceInfo.update()
-            }
-        }
-        .onChange(of: scenePhase) { phase in
-            if phase == .active {
-                deviceInfo.update()
-            }
-            
-            // update nofification to widget
-            WidgetCenter.shared.reloadTimelines(ofKind: "com.yuupejp.Battery.BatteryWidget")
-            WidgetCenter.shared.reloadTimelines(ofKind: "com.yuupejp.Battery.BatteryWidget2")
-        }
+        //        .onChange(of: scenePhase) { phase in
+        //            if phase == .active {
+        //                deviceInfo.update()
+        //            }
+        //
+        //            // update nofification to widget
+        //            WidgetCenter.shared.reloadTimelines(ofKind: "com.yuupejp.Battery.BatteryWidget")
+        //        }
     }
 }
 
 struct ListItemView: View {
     var name: Text
     var value: Text
-
+    
     var body: some View {
         HStack {
             name.frame(maxWidth: .infinity, alignment: .leading)
@@ -87,10 +154,8 @@ struct ContentView_Previews: PreviewProvider {
     static let localizationIds = ["en", "ja"]
     
     static var previews: some View {
-        let deviceInfo = DeviceInfo(batteryLevel: 0.8, batteryState: .charging)
-        
         ForEach(localizationIds, id: \.self) { id in
-            ContentView(deviceInfo: deviceInfo)
+            ContentView()
                 .previewDisplayName("Localized - \(id)")
                 .environment(\.locale, .init(identifier: id))
         }

@@ -3,8 +3,9 @@
   Battery
 */
 
-"WidgetDisplayName1" = "バッテリー状態";
-"WidgetDisplayName2" = "バッテリー状態";
+"battery" = "バッテリー";
+
+"WidgetDisplayName" = "バッテリー状態";
 "WidgetDescription" = "端末のバッテリー状態を表示します";
 
 "BatterySection" = "バッテリー";
@@ -21,3 +22,25 @@
 "BatteryState.full" = "フル充電";
 "BatteryState.default" = "不明(未定義)";
 
+"RefreshTime" = "検知時刻";
+"RefreshTimeOffset" = "経過時間";
+
+
+// App Setting
+"SettingGeneral" = "全般";
+
+"SettingCircleType" = "表示形式";
+"SettingCircleType_Meter" = "計量計";
+"SettingCircleType_Circle" = "ドーナツ型";
+
+"SettingMeterColor" = "メーターの色";
+"SettingMeterColor_Blue" = "青";
+"SettingMeterColor_Green" = "緑";
+
+"SettingIconType" = "アイコン形状";
+"SettingIconType_Battery" = "バッテリー";
+"SettingIconType_Iphone" = "端末";
+
+"SettingWidget" = "ウィジェット";
+"SettingWidget_ShowIcon" = "アイコン表示";
+"SettingWidget_ShowTime" = "残量検知時刻表示";
